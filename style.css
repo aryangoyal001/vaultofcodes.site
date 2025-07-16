@@ -1,0 +1,231 @@
+:root {
+  --primary: #5c67f2;
+  --accent: #3c49e7;
+  --text: #1f1f1f;
+  --background: #fafbff;
+  --white: #ffffff;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ccc;
+  --toast-bg: #222;
+}
+
+body.dark {
+  --text: #f4f4f4;
+  --background: #1e1e2f;
+  --white: #252537;
+  --card-bg: #2d2d40;
+  --input-bg: #2d2d40;
+  --input-border: #444;
+  --toast-bg: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--white);
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  flex-wrap: wrap;
+}
+
+.brand-logo {
+  height: auto;
+  width: auto;
+  max-height: 60px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.brand-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Form container */
+.container {
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 32px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent);
+}
+
+/* Card for result */
+.card {
+  margin: 30px auto;
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+.card h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+
+.assignment-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.assignment-status span {
+  background-color: #f1f1f1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Spinner */
+.spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Toast */
+.toast {
+  visibility: hidden;
+  background-color: var(--toast-bg);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+
+/* Theme Toggle */
+.theme-toggle-bottom {
+  margin: 40px auto 60px;
+  display: block;
+  padding: 10px 24px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark .theme-toggle-bottom {
+  background-color: #333;
+  border-color: #555;
+  color: #f5f5f5;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .container { margin: 30px 16px; padding: 24px; }
+  .brand-title { font-size: 20px; }
+  .brand-logo { max-width: 140px; max-height: 50px; }
+  .card { padding: 20px; }
+}
